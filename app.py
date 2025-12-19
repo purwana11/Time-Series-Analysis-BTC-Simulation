@@ -44,13 +44,13 @@ with col2:
     st.markdown(f"""
     **Narasi Jurnal:**
     "Saya menemukan bahwa data ini memiliki format tanggal yang standar. Namun, sebagai langkah pencegahan, 
-    saya melakukan pengecekan gap dan melakukan **Interpolasi Linear** [cite: 418] untuk memastikan alur waktu 
+    saya melakukan pengecekan gap dan melakukan **Interpolasi Linear** untuk memastikan alur waktu 
     tetap kontinu. Sekarang, jejak digital ini sudah bersih dan siap diinterogasi."
     """)
 
 # --- JURNAL PART 2: Visual Inspection ---
 st.header("📈 Jurnal Part 2: Melihat Wajah Sistem (Visual Inspection)")
-st.info("Misi: Mendapatkan gambaran besar perilaku sistem. [cite: 421]")
+st.info("Misi: Mendapatkan gambaran besar perilaku sistem.")
 
 fig2, ax2 = plt.subplots(figsize=(10, 4))
 ax2.plot(df_cleaned['Close'], label='Data Mentah (Harian)', alpha=0.3, color='gray')
@@ -63,12 +63,12 @@ st.pyplot(fig2)
 st.markdown(f"""
 **Narasi Jurnal:**
 "Secara visual, sistem menunjukkan tren kenaikan yang konsisten, terutama sejak lonjakan besar di tahun 2017. [cite: 427]
-Awalnya grafik terlihat sangat berantakan (*too noisy*), namun setelah saya melakukan *resampling* menjadi rata-rata mingguan, pola lonjakan tajam setiap akhir tahun mulai terlihat lebih jelas. [cite: 428, 460]"
+Awalnya grafik terlihat sangat berantakan (*too noisy*), namun setelah saya melakukan *resampling* menjadi rata-rata mingguan, pola lonjakan tajam setiap akhir tahun mulai terlihat lebih jelas."
 """)
 
 # --- JURNAL PART 3: Decomposing the Pattern ---
 st.header("🧪 Jurnal Part 3: Bedah Komponen (Decomposition)")
-st.info("Misi: Memisahkan sinyal murni dari gangguan. [cite: 431]")
+st.info("Misi: Memisahkan sinyal murni dari gangguan.")
 
 # Dekomposisi menggunakan statsmodels 
 # Model Multiplicative sering lebih cocok untuk data finansial/kripto yang volatil
@@ -84,13 +84,13 @@ with col_b:
     **Narasi Jurnal:**
     "Setelah membedah komponen data menggunakan `seasonal_decompose`, ditemukan bahwa:
     - **Trend**: Mengonfirmasi kenaikan nilai Bitcoin jangka panjang.
-    - **Seasonal**: Terdapat pola musiman yang periodik. [cite: 435]
-    - **Residual**: Menunjukkan fluktuasi acak yang besar, menandakan adanya faktor eksternal tak terduga." [cite: 435]
+    - **Seasonal**: Terdapat pola musiman yang periodik.
+    - **Residual**: Menunjukkan fluktuasi acak yang besar, menandakan adanya faktor eksternal tak terduga."
     """)
 
 # --- JURNAL PART 4: Statistical Health Check ---
 st.header("🏥 Jurnal Part 4: Diagnosis Stasioneritas")
-st.info("Misi: Mengecek stabilitas sistem untuk pemodelan selanjutnya. [cite: 437]")
+st.info("Misi: Mengecek stabilitas sistem untuk pemodelan selanjutnya.")
 
 # Rolling Statistics [cite: 438]
 rolling_mean = df_cleaned['Close'].rolling(window=window_size).mean()
@@ -112,7 +112,7 @@ st.write(f'p-value: {result[1]:.4f}')
 
 st.markdown("""
 **Narasi Jurnal:**
-"Garis rata-rata bergerak (*Rolling Mean*) terlihat menanjak, yang mengonfirmasi bahwa data ini **Tidak Stasioner**. [cite: 442]
+"Garis rata-rata bergerak (*Rolling Mean*) terlihat menanjak, yang mengonfirmasi bahwa data ini **Tidak Stasioner**.
 Artinya, rata-rata sistem berubah seiring waktu. Hal ini diperkuat dengan nilai *p-value* yang lebih besar dari 0.05, 
 sehingga kita gagal menolak hipotesis nol."
 """)
