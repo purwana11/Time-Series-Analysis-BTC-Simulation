@@ -31,7 +31,7 @@ df = load_data()
 
 # --- JURNAL PART 1: The First Encounter ---
 st.header("🔍 Jurnal Part 1: Membersihkan TKP (Setup & Cleaning)")
-st.info("Misi: Memastikan data siap 'berbicara'. Data Time Series sangat sensitif terhadap urutan dan kekosongan. [cite: 412]")
+st.info("Misi: Memastikan data siap 'berbicara'. Data Time Series sangat sensitif terhadap urutan dan kekosongan.")
 
 # Aksi Teknis: Interpolasi 
 df_cleaned = df.interpolate(method='time')
