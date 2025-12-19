@@ -1,5 +1,4 @@
-streamlit>=1.30
-pandas>=2.0
-matplotlib>=3.8
-statsmodels>=0.14
-
+streamlit
+pandas
+matplotlib
+statsmodels
