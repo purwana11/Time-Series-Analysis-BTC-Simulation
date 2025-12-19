@@ -118,4 +118,3 @@ sehingga kita gagal menolak hipotesis nol."
 """)
 
 st.divider()
-st.success("Investasi Selesai. Data siap untuk tahap Pemodelan (TA-13).")
